@@ -1,0 +1,33 @@
+%% Here you define environments to use in your thesis
+%% That also includes the definition of environments such as mathmatical theorems, defintions etc.
+
+%=============================
+% normal environments        =
+%=============================
+
+%Example Environment
+%\newcounter{EXAMPLE}[section]
+%\newenvironment{EXAMPLE}
+%% begin env
+%{\refstepcounter{EXAMPLE}\par\medskip
+%	\noindent \textbf{\textit{Example~\thesection.\theEXAMPLE}} 
+%	\begin{itshape}	
+%}
+%%end Env
+%{\end{itshape}
+%}
+%\newcommand{\EXAMRef}[1]{\color{black} Example~\ref{#1}\color{black}}
+
+%% environment to mark changed parts of the paper
+\newenvironment{ChangedEnv}{
+	\color{green3}
+}
+{\color{black} \vspace{0.3cm}
+}
+
+%===========================================
+% mathematical definitions and theorems    =
+%===========================================
+%\newtheorem{definition}{Definition}[chapter]
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]

@@ -1,0 +1,258 @@
+\documentclass{wissdoc}
+% ----------------------------------------------------------------
+% student thesis -- main document
+% ----------------------------------------------------------------
+%%
+%%
+% wissdoc Options: draft, relaxed, pdf --> see wissdoc.cls
+% ------------------------------------------------------------------
+% additional packages: (for documentation see "latex <package>.dtx")
+\usepackage[numbers,sort&compress]{natbib}
+
+\usepackage[english]{babel} % language settings
+\usepackage[utf8]{inputenc} % concrete encoding of symbols
+\usepackage[printonlyused]{acronym} % show only acronyms used throughout the document
+\usepackage{listings} % source code listings
+% packages to allow drawing tikz pictures
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.7}
+\usepackage{tikz}
+	\usetikzlibrary{arrows,positioning,backgrounds,fit,trees} 
+	\usetikzlibrary{fadings,shapes.geometric}
+	\usetikzlibrary{decorations,scopes,calc,decorations.pathreplacing}
+
+% useful packages:
+\usepackage{amsmath} % standard package for math stuff
+% \usepackage{rotating} % rotation of figures, tables etc.
+% \usepackage{enumitem} % cotroll the layout of itemize, enumerate, and description 
+% \usepackage{pdfpages} % enables including single pages of a pdf or the whole pdf
+% \usepackage{newunicodechar} % re-define unicode characters \newunicodechar{}{}
+
+
+\usepackage{varioref} 
+% \usepackage{verbatim}
+% \usepackage{float}    %z.B. \floatstyle{ruled}\restylefloat{figure}
+% \usepackage{subfigure}
+% \usepackage{fancybox} % cotrolls for boxes (shadows, other forms, etc.) 
+\usepackage{tabularx} % automatic resizing of column width in tables
+% \usepackage{supertab} % enables tables over multiple pages
+\usepackage{booktabs}
+%% ---------------- end of usepackages -------------
+
+
+%% Meta-information of the pdf
+\hypersetup{
+ pdfauthor={N.N.},
+ pdftitle={Not set}
+ pdfsubject={Not set},
+ pdfkeywords={Not set}
+}
+
+% Print URLs not in Typewriter Font
+\def\UrlFont{\rm}
+
+\newcommand{\blankpage}{% creates empty page without page numbers, puts the next page right
+ \clearpage{\pagestyle{empty}\cleardoublepage}
+}
+
+%% options for the whole document
+
+% seperation hints
+% important! 
+% in ngerman-paket the following seperation hints are included:
+% "- = additional seperation point
+% "| = Avoidance of ligatures and possible separation (e.g., Schaf"|fell)
+% "~ = Hyphen at which no separation is allowed (e.g., bergauf und "~ab)
+% "= = Hyphen where words before and after may be separated
+% "" = Separation point without generating a hyphen (e.g., und/""oder)
+
+% Describe seperation hints for words here
+\hyphenation{
+% Pro-to-koll-in-stan-zen
+% Ma-na-ge-ment  Netz-werk-ele-men-ten
+% Netz-werk Netz-werk-re-ser-vie-rung
+% Netz-werk-adap-ter Fein-ju-stier-ung
+% Da-ten-strom-spe-zi-fi-ka-tion Pa-ket-rumpf
+% Kon-troll-in-stanz
+}
+
+% open index file
+\ifnotdraft{\makeindex}
+%%%%%%%%%%%%%% includeonly %%%%%%%%%%%%%%%%%%%
+% Only the parts that are listed here are included!
+\includeonly{%
+%########## include essentials ###########
+essentials/frontpage,%
+% A declaration is mandatory in KA for final theses
+essentials/declaration,
+% It is not mandatory to have an appendix, 
+%but most of the time you have some data or additional visuals that do not fit into the thesis
+essentials/appendix,
+% define acronyms used in this thesis 
+% acronyms will be listed in the acronym reference automatically
+essentials/acronyms, %
+%########## utility includes ###########
+% defines colors according to KIT coporate desingn and names them for your convinience
+utility/colorScheme,
+% use this document to re-define latex commands, so that they will suite your needs
+utility/commandReDef,
+% define customized environments if required
+utility/environmentDef,
+% define your own lstlist style.
+% For instance to use java or python code highlighting or to have a customized pseudocode style
+utility/lststyle,
+% Define latex macros, and new commands for your convinience
+utility/macros,
+% map mathmatical symbols and inline formulas to semantic names
+% for instance: mapping the '\wedge' command to teh semantic name '\pand' to use it as symbol for a propositional and
+utility/mathSymbolDef,
+% Define terms that are used frequently so that they are always spelled the same way
+utility/termDef,
+% Define custom tikz styles for your thesis, if required
+utility/tikzStyle,
+% map urls to short hand commands for a convinient use
+utility/urls,
+%########## include chapters ###########
+% Abstract in german
+chapters/000_abstract_de,
+% Abstract in english
+chapters/000_abstract_eng,
+% motivation, research goal, structure
+chapters/100_introduction,
+% problem statement and motivating example
+% maybe merged with introduction or basics
+chapters/200_problemstatement,
+% background and basics to understand your thesis
+chapters/300_basics,
+% Problembeschreibung (Detail) und Related Work
+%chapters/analysis,   
+% Description of the problem solution (concepts, general architecture, ...)
+chapters/400_design, 
+% example chapter showing some latex concepts to use in your thesis
+chapters/xxx_example,
+% Description of the conversion/implementation
+chapters/500_implementation,  
+% Description of the evaluation for your concepts (planning, execution, results, discussion)
+chapters/600_evaluation,      
+% describe related research and describe how your work deffers from what exists
+% based on the topic this section may be placed after the basics
+chapters/700_relatedwork, 
+% Summary of your work and its results.
+% Includes a discussion about future work and how to procede with our results
+chapters/800_conclusion,  
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%
+%% ++++++++++++++++++++++++++++++++++++++++++
+%% including utility files
+%% ++++++++++++++++++++++++++++++++++++++++++
+% define acronyms used in this thesis 
+% defines colors according to KIT coporate desingn and names them for your convinience
+\include{utility/colorScheme}
+% use this document to re-define latex commands, so that they will suite your needs
+\include{utility/commandReDef}
+% define customized environments if required
+\include{utility/environmentDef}
+% define your own lstlist style.
+% For instance to use java or python code highlighting or to have a customized pseudocode style
+\include{utility/lststyle}
+% Define latex macros, and new commands for your convinience
+\include{utility/macros}
+% map mathmatical symbols and inline formulas to semantic names
+% for instance: mapping the '\wedge' command to teh semantic name '\pand' to use it as symbol for a propositional and
+\include{utility/mathSymbolDef}
+% Define terms that are used frequently so that they are always spelled the same way
+\include{utility/termDef}
+% Define custom tikz styles for your thesis, if required
+\include{utility/tikzStyle}
+% map urls to short hand commands for a convinient use
+\include{utility/urls}
+%
+%% ++++++++++++++++++++++++++++++++++++++++++
+%% Frontmatter
+%% ++++++++++++++++++++++++++++++++++++++++++
+\frontmatter
+\pagenumbering{roman}
+\ifnotdraft{
+ \include{essentials/frontpage}
+ \blankpage % empty page for title backsite
+ %
+ % The following declaration is mandatory for diploma theses
+ % (see examination regulations), not required for student research projects
+ \include{essentials/declaration}
+ \blankpage % Blank page on declaration back
+}
+%
+%% *************** Start of chapters ****************
+\include{chapters/000_abstract_de}
+\include{chapters/000_abstract_eng}
+%% ++++++++++++++++++++++++++++++++++++++++++
+%% Indexes
+%% ++++++++++++++++++++++++++++++++++++++++++
+\setcounter{tocdepth}{2}
+\ifnotdraft{
+{\parskip 0pt\tableofcontents} % toc bitte einzeilig
+\blankpage
+\listoffigures
+\blankpage
+\listoftables
+\blankpage
+\include{essentials/acronyms}
+}
+%
+%% ++++++++++++++++++++++++++++++++++++++++++
+%% Main part
+%% ++++++++++++++++++++++++++++++++++++++++++
+% specifies where tex searches for your file names
+\graphicspath{{figures/}}
+%
+\mainmatter
+\pagenumbering{arabic}
+ % introduction
+\include{chapters/100_introduction} 
+% detailed problem statement, motivating example, running example
+\include{chapters/200_problemstatement} 
+% background and basics
+\include{chapters/300_basics} 
+% design of your problem solution (concepts, architectures designs, etc.)
+\include{chapters/400_design} 
+% example chapter to show how formulas, figures, tables and other elements are used in this template
+%!! remove this example for the final version of your thesis
+\include{chapters/xxx_example}
+% concrete solution of your problem (tooling, algorithms, etc.)
+\include{chapters/500_implementation}    
+% the evaluation of your work (planning, design, execution, results, discussion)
+\include{chapters/600_evaluation} 
+% describe research related to your own work and differentiate between your concept and existing approaches
+\include{chapters/700_relatedwork}
+% Summary of your work and its results.
+% Includes a discussion about future work and how to procede with our results
+\include{chapters/800_conclusion} 
+
+%% ++++++++++++++++++++++++++++++++++++++++++
+%% Literature
+%% ++++++++++++++++++++++++++++++++++++++++++
+%  with the command \nocite also non cited references are also printed
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\bibname}
+%%
+% only specify if sources not cited in the text are also to appear
+\nocite{*} 
+%########## different citation styles
+% with abbreviated first names of the authors
+% abbrvnat unsrtnat
+%\bibliographystyle{gerplain}
+\bibliographystyle{alpha}
+\bibliography{literature/bibAbrv, literature/bibFull, literature/literature}
+
+%% ++++++++++++++++++++++++++++++++++++++++++
+%% apendix
+%% ++++++++++++++++++++++++++++++++++++++++++
+
+\appendix
+\include{essentials/appendix}
+
+\end{document}
+%% end of file

@@ -1,0 +1,58 @@
+%% Titelseite
+
+\def\usesf{}
+\let\usesf\sffamily % comment out this line for normal TeX font
+
+\newsavebox{\Reviewer}
+\savebox{\Reviewer}{\usesf Prof.~Dr.}
+\newsavebox{\SecondReviewer}
+\savebox{\SecondReviewer}{\usesf Prof.~Dr.}
+
+\begin{titlepage}
+\setlength{\unitlength}{1pt}
+\begin{picture}(0,0)(85,770)
+\includegraphics[width=\paperwidth]{logos/KIT_Deckblatt}
+\end{picture}
+
+%\vspace*{-39pt}\hspace*{300pt}\includegraphics[width=.27\paperwidth]{logos/IOSB}
+\vspace*{-39pt}\hspace*{368pt}\includegraphics[width=.15\paperwidth]{logos/LogoTaglineEnglishColor.pdf}
+
+\thispagestyle{empty}
+
+%\begin{titlepage}
+%%\let\footnotesize\small \let\footnoterule\relax
+\begin{center}
+\hbox{}
+\vfill
+{\usesf
+{\huge\bfseries Title of the Thesis \\ \par}
+\vskip 1.8cm
+Bachelor's Thesis\\
+of\\[2mm]
+\vskip 1cm
+
+{\large\bfseries Name Surname\\}
+\vskip 1.2cm
+at the Department of Informatics\\
+Institute of Information Security and Dependability\\
+Test, Validation and Analysis (TVA)
+\vskip 3cm
+\begin{tabular}{p{5.5cm}l}
+Reviewer: & \usebox{\Reviewer} \\
+Second Reviewer: & \usebox{\SecondReviewer} \\
+Advisors: &  M.Sc. \\
+ & Dr. 
+\end{tabular}
+\vskip 3cm
+Completion period:\qquad ??.~Month~2023 -- ??.~Month~2023
+}
+\end{center}
+\vfill
+\end{titlepage}
+%% End of titlepage
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "thesis"
+%%% End: 
