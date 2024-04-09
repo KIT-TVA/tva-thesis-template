@@ -7,8 +7,13 @@
 % wissdoc Options: draft, relaxed, pdf --> see wissdoc.cls
 % ------------------------------------------------------------------
 % additional packages: (for documentation see "latex <package>.dtx")
-\usepackage[numbers,sort&compress]{natbib}
+\usepackage[style=alphabetic]{biblatex}
 
+\addbibresource{literature/literature.bib}
+\addbibresource{literature/bibAbrv.bib}
+\addbibresource{literature/bibFull.bib}
+
+\usepackage[autostyle]{csquotes}
 \usepackage[english]{babel} % language settings
 \usepackage[utf8]{inputenc} % concrete encoding of symbols
 \usepackage[printonlyused]{acronym} % show only acronyms used throughout the document
@@ -243,9 +248,8 @@ chapters/800_conclusion,
 %########## different citation styles
 % with abbreviated first names of the authors
 % abbrvnat unsrtnat
-%\bibliographystyle{gerplain}
-\bibliographystyle{alpha}
-\bibliography{literature/bibAbrv, literature/bibFull, literature/literature}
+
+\printbibliography
 
 %% ++++++++++++++++++++++++++++++++++++++++++
 %% apendix
